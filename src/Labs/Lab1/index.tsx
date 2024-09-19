@@ -280,7 +280,7 @@ export default function Lab1() {
           &nbsp; to get dummy text<br />
 
           Link to the repository: &nbsp;
-          <a id="wd-github" href="https://www.github.com/aditya-narla/kanbas-react-web-app">Repo</a>
+          <a id="wd-github" href="https://www.github.com/aditya-narla/kanbas-react-web-app" target="_blank">Repo</a>
         </form>
       </div>
     </div>
