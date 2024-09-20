@@ -10,6 +10,7 @@ export default function Kanbas() {
             Name: <b>Aditya Narla</b> <br />
             Section: <b>02</b> <br />
             CRN: <b>20595</b> <br /> <br />
+            <a id="wd-github" href="https://github.com/aditya-narla/kanbas-react-web-app" target="_blank" rel="noreferrer">Github Repository</a><br /><br />
             <table>
                 <tr>
                     <td valign="top">
