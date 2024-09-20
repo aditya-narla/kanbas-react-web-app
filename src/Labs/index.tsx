@@ -1,4 +1,3 @@
-// Name: Aditya Narla
 import Lab1 from "./Lab1";
 import { Route, Routes, Navigate } from "react-router";
 import TOC from "./TOC";
@@ -7,6 +6,9 @@ import Lab3 from "./Lab3";
 export default function Labs() {
   return (
     <div id="wd-labs">
+      Name: <b>Aditya Narla</b> <br />
+      Section: <b>02</b> <br />
+      CRN: <b>20595</b> <br /> <br />
       <h1>Labs</h1>
       <TOC />
       <Routes>
