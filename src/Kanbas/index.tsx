@@ -7,6 +7,9 @@ import { Route, Routes, Navigate } from "react-router";
 export default function Kanbas() {
     return (
         <div id="wd-kanbas">
+            Name: <b>Aditya Narla</b> <br />
+            Section: <b>02</b> <br />
+            CRN: <b>20595</b> <br /> <br />
             <table>
                 <tr>
                     <td valign="top">

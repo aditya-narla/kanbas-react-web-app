@@ -4,10 +4,14 @@ export default function Lab1() {
       <h2>Lab 1</h2>
       <h3>HTML Examples</h3>
 
+      {/* 2.6 Heading Tags */}
+
       <div id="wd-h-tag">
         <h4>Heading Tags</h4>
         Text documents are often broken up into several sections and subsections. Each section is usually prefaced with a short title or heading that attempts to summarize the topic of the section it precedes. For instance this paragraph is preceded by the heading Heading Tags. The font of the section headings are usually larger and bolder than their subsection headings. This document uses headings to introduce topics such as HTML Documents, HTML Tags, Heading Tags, etc. HTML heading tags can be used to format plain text so that it renders in a browser as large headings. There are 6 heading tags for different sizes: h1, h2, h3, h4, h5, and h6. Tag h1 is the largest heading and h6 is the smallest heading.
       </div>
+
+      {/* 2.7 Paragraph Tags */}
 
       <div id="wd-p-tag">
         <h4>Paragraph Tag</h4>
@@ -20,7 +24,8 @@ export default function Lab1() {
           vertical gaps between long pieces of text like this one.
         </p>
 
-        <p id="wd-p-3">This is the second paragraph. Even though there is a deliberate white
+        <p id="wd-p-3">
+          This is the second paragraph. Even though there is a deliberate white
           gap between the paragraph above and this paragraph, by default
           browsers render them as one contiguous piece of text as shown here on
           the right.
@@ -31,6 +36,9 @@ export default function Lab1() {
           tag to tell browsers to render the gaps.
         </p>
       </div>
+
+      {/* 2.8 List Tags */}
+      {/* 2.8.1 Ordered List Elements */}
 
       <div id="wd-lists">
         <h4>List Tags</h4>
@@ -48,12 +56,14 @@ export default function Lab1() {
         </ol>
 
         How to make salad:
-        <ol id="wd-salad">
+        <ol id="wd-your-favorite-recipe">
           <li>To assemble the salad, put the spinach, oranges, cucumber, onion, and walnuts in a large salad bowl.</li>
           <li>Cover and refrigerate until ready to serve (up to 12 hours).</li>
           <li>When dinner is ready, toss the salad gently to combine the ingredients.</li>
           <li>Allow everyone to top their own salad with black pepper and balsamic vinegar.</li>
         </ol>
+
+        {/* 2.8.2 Unordered List Elements */}
 
         <h5>Unordered List Tag</h5>
         My favorite books (in no particular order)
@@ -64,14 +74,16 @@ export default function Lab1() {
           <li>Red Mars</li>
           <li>The Forever War</li>
         </ul>
+
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
           <li>To Kill a Mockingbird</li>
           <li>1984</li>
           <li>Pride and Prejudice</li>
         </ul>
-
       </div>
+
+      {/* 2.9 Table Tags */}
 
       <div id="wd-tables">
         <h4>Table Tag</h4>
@@ -155,6 +167,8 @@ export default function Lab1() {
         </table>
       </div>
 
+      {/* 2.10 Image Tag */}
+
       <div id="wd-images">
         <h4>Image tag</h4>
         Loading an image from the internet:
@@ -162,12 +176,16 @@ export default function Lab1() {
         <img id="wd-starship"
           width="400px"
           src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"
+          alt="A starship"
         />
         <br />
         Loading a local image:
         <br />
-        <img id="wd-teslabot" src="images/teslabot.jpg" height="200px" />
+        <img id="wd-teslabot" src="images/teslabot.jpg" height="200px" alt="Tesla Bot" />
       </div>
+
+      {/* 2.11 Form Tags */}
+      {/* 2.11.1 Text fields */}
 
       <div id="wd-forms">
         <h4>Form Elements</h4>
@@ -184,17 +202,26 @@ export default function Lab1() {
           <input type="text" id="wd-text-fields-last-name" placeholder="Doe"
             value="Wonderland" title="The last name" />
 
+          {/* 2.11.2 Textareas */}
+
           <h5>Text boxes</h5>
           <label>Biography:</label><br />
-          <textarea id="wd-textarea" cols={30} rows={10}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+          <textarea id="wd-textarea" cols={30} rows={10}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </textarea>
+
+          {/* 2.11.3 Buttons */}
 
           <h5 id="wd-buttons">Buttons</h5>
           <button id="wd-all-good" onClick={() => alert("Life is Good!")} type="button">
             Hello World!
           </button>
 
+          {/* 2.11.4 File upload button */}
+
           <h5>File upload</h5>
           <input id="wd-upload" type="file" />
+
+          {/* 2.11.5 Radio buttons */}
 
           <h5 id="wd-radio-buttons">Radio buttons</h5>
 
@@ -212,6 +239,8 @@ export default function Lab1() {
           <input type="radio" name="radio-genre" id="wd-radio-fantasy" />
           <label htmlFor="wd-radio-fantasy">Fantasy</label>
 
+          {/* 2.11.6 Checkboxes */}
+
           <h5 id="wd-checkboxes">Checkboxes</h5>
           <label>Favorite movie genre:</label><br />
 
@@ -226,6 +255,8 @@ export default function Lab1() {
 
           <input type="checkbox" name="check-genre" id="wd-chkbox-fantasy" />
           <label htmlFor="wd-chkbox-fantasy">Fantasy</label>
+
+          {/* 2.11.7 Dropdowns */}
 
           <h4 id="wd-dropdowns">Dropdowns</h4>
 
@@ -248,6 +279,8 @@ export default function Lab1() {
               Science Fiction</option>
             <option value="FANTASY">Fantasy</option>
           </select>
+
+          {/* 2.11.8 Other HTML field types */}
 
           <h4>Other HTML field types</h4>
 
@@ -274,13 +307,14 @@ export default function Lab1() {
             id="wd-text-fields-dob"
             value="2000-01-21" /><br />
 
+          {/* 2.12 Anchor Tag */}
+
           <h4>Anchor tag</h4>
           Please &nbsp;
           <a id="wd-lipsum" href="https://www.lipsum.com">click here</a>
           &nbsp; to get dummy text<br />
 
-          Link to the repository: &nbsp;
-          <a id="wd-github" href="https://www.github.com/aditya-narla/kanbas-react-web-app" target="_blank">Repo</a>
+          <a id="wd-github" href="https://www.github.com/aditya-narla/kanbas-react-web-app" target="_blank" rel="noreferrer">Repository</a>
         </form>
       </div>
     </div>
