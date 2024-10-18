@@ -7,7 +7,7 @@ export default function AccountNavigation() {
             <Link id="wd-signup-link" to="/Kanbas/Account/Signup"
             className="list-group-item text-danger border border-0"> Signup </Link>
             <Link id="wd-profile-link" to="/Kanbas/Account/Profile"
-            className="list-group-item text-danger border border-0"> Signup </Link>
+            className="list-group-item text-danger border border-0"> Profile </Link>
         </div>
     );
 }
