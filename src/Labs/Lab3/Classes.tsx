@@ -15,6 +15,10 @@ export default function Classes() {
                 </div>
                 <hr />
             </div>
+            <div className={`wd-bg-${color} wd-fg-black wd-padding-10px`}>
+                Dynamic Blue background
+            </div>
+            <hr />
             <h2>Classes</h2>
             <div className={`${dangerous ? 'wd-bg-red' : 'wd-bg-green'}
                                 wd-fg-black wd-padding-10px`}>
@@ -24,6 +28,7 @@ export default function Classes() {
                 Dynamic Blue background
             </div>
             <hr />
+
         </div>
     );
 }
