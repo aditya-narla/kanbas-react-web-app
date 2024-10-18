@@ -29,7 +29,6 @@ export default function Classes() {
                 Dynamic Blue background
             </div>
             <hr />
-
         </div>
     );
 }
