@@ -36,10 +36,18 @@ export default function Assignments() {
                                     </a>
                                     <AssignmentControlButtons />
                                     <div className="wd-assignment-details ms-5">
-                                        <span className="wd-module-type text-danger">Multiple Modules</span> |
-                                        <span className="wd-start-date"> <b>Not available until</b> {assignment.available_from_date} </span> |
-                                        <span className="wd-end-date"><b> Due</b> {assignment.due_date} </span> |
-                                        <span className="wd-points"> {assignment.points} pts</span>
+                                        <span className="wd-module-type text-danger">
+                                            Multiple Modules
+                                        </span> | &nbsp;
+                                        <span className="wd-start-date">
+                                            <b>Not available until</b> {assignment.available_from_date} at 12:00 am
+                                        </span> |
+                                        <span className="wd-end-date">
+                                            <b> Due</b> {assignment.due_date} at 11:59 pm
+                                        </span> | 
+                                        <span className="wd-points">
+                                            {assignment.points} pts
+                                        </span>
                                     </div>
                                 </li>
                             ))}
