@@ -25,21 +25,21 @@ export default function Assignments() {
     return (
         <div>
             <ProtectedContent allowedRoles={["FACULTY"]}>
-            <div id="assignment-controls" className="text-nowrap mb-3 d-flex justify-content-between align-items-center">
-            <div className="d-flex align-items-center">
-                <IoIosSearch size={24} />
-                <input id="wd-search-assignment" className="form-control me-2" placeholder="Search..." />
-            </div>
-            <div className="wd-assignment-btn float-end d-none d-xl-block">
-                <button className="wd-add-assignment-group btn btn-lg btn-secondary me-1 rounded-2">
-                    <BsPlusLg /> Group
-                </button>
-                <Link to={`/Kanbas/Courses/${cid}/New`}
-                    className="wd-add-assignment btn btn-lg btn-danger text-white rounded-2">
-                    <BsPlusLg /> Assignment
-                </Link>
-            </div>
-        </div>
+                <div id="assignment-controls" className="text-nowrap mb-3 d-flex justify-content-between align-items-center">
+                    <div className="d-flex align-items-center">
+                        <IoIosSearch size={24} />
+                        <input id="wd-search-assignment" className="form-control me-2" placeholder="Search..." />
+                    </div>
+                    <div className="wd-assignment-btn float-end d-none d-xl-block">
+                        <button className="wd-add-assignment-group btn btn-lg btn-secondary me-1 rounded-2">
+                            <BsPlusLg /> Group
+                        </button>
+                        <Link to={`/Kanbas/Courses/${cid}/New`}
+                            className="wd-add-assignment btn btn-lg btn-danger text-white rounded-2">
+                            <BsPlusLg /> Assignment
+                        </Link>
+                    </div>
+                </div>
             </ProtectedContent>
             <br /><br />
             <ul id="wd-assignments" className="list-group rounded-0">
@@ -61,15 +61,10 @@ export default function Assignments() {
                                 <li key={assignment._id} className="wd-assignment-list-item list-group-item p-3 ps-1">
                                     <BsGripVertical className="me-2 fs-3" />
                                     <span className="float-left text-success me-2">  <FaBook /></span>
-                                    <ProtectedContent allowedRoles={["FACULTY"]}>
-                                        <a className="wd-assignment-link text-black text-decoration-none ps-1"
-                                            href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
-                                            {assignment.title}
-                                        </a>
-                                    </ProtectedContent>
-                                    <ProtectedContent allowedRoles={["STUDENT"]}>
+                                    <a className="wd-assignment-link text-black text-decoration-none ps-1"
+                                        href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
                                         {assignment.title}
-                                    </ProtectedContent>
+                                    </a>
                                     <AssignmentControlButtons
                                         assignmentId={assignment._id}
                                         onDelete={handleDeleteAssignment}

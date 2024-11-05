@@ -1,6 +1,6 @@
 import "./styles.css";
 import Account from "./Account";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import KanbasNavigation from "./Navigation";
 import Courses from "./Courses";
 import * as db from "./Database";

@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignment, addAssignment } from "./reducer";
 import React, { useState } from "react";
+import ProtectedContent from "../../Account/ProtectedContent";
 
 export default function AssignmentEditor() {
     const { aid, cid } = useParams();
@@ -12,7 +13,10 @@ export default function AssignmentEditor() {
     const dispatch = useDispatch();
 
     const assignment = assignments ? assignments.find((assignment: any) => assignment._id === aid) : null;
-    
+
+    const { currentUser } = useSelector((state: any) => state.accountReducer);
+    const isReadOnly = currentUser.role === "STUDENT";
+
     const [formState, setFormState] = useState({
         title: assignment?.title || "",
         description: assignment?.description || "",
@@ -66,6 +70,7 @@ export default function AssignmentEditor() {
                     className="form-control"
                     value={formState.title}
                     onChange={handleChange}
+                    readOnly={isReadOnly}
                 /> <br />
                 <textarea
                     id="description"
@@ -73,6 +78,7 @@ export default function AssignmentEditor() {
                     className="form-control"
                     value={formState.description}
                     onChange={handleChange}
+                    readOnly={isReadOnly}
                 />
                 <br />
                 <table>
@@ -87,10 +93,12 @@ export default function AssignmentEditor() {
                                     className="form-control"
                                     value={formState.points}
                                     onChange={handleChange}
+                                    readOnly={isReadOnly}
                                 />
                             </td>
                         </tr>
                         <br />
+                        <ProtectedContent allowedRoles={["FACULTY"]}>
                         <tr>
                             <td align="right" valign="top">
                                 <label htmlFor="assignment-group" className="me-2">Assignment Group</label>
@@ -107,40 +115,40 @@ export default function AssignmentEditor() {
                             </td>
                         </tr>
                         <p></p>
-                        <tr>
-                            <td align="right" valign="top">
-                                <label htmlFor="wd-display-grade-as" className="me-2">Display Grade as</label>
-                            </td>
-                            <td>
-                                <select
-                                    id="gradeType"
-                                    className="form-select"
-                                    value={formState.gradeType}
-                                    onChange={handleChange}
-                                >
-                                    <option value="Percentage">Percentage</option>
-                                    <option value="Points">Points</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <p></p>
-                        <tr>
-                            <td align="right" valign="top">
-                                <label htmlFor="wd-submission-type" className="me-2">Submission Type</label>
-                            </td>
-                            <td className="border p-3">
-                                <select
-                                    id="submissionType"
-                                    className="form-select"
-                                    value={formState.submissionType}
-                                    onChange={handleChange}
-                                >
-                                    <option value="Online">Online</option>
-                                    <option value="In-person">In-person</option>
-                                </select>
+                            <tr>
+                                <td align="right" valign="top">
+                                    <label htmlFor="wd-display-grade-as" className="me-2">Display Grade as</label>
+                                </td>
+                                <td>
+                                    <select
+                                        id="gradeType"
+                                        className="form-select"
+                                        value={formState.gradeType}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="Percentage">Percentage</option>
+                                        <option value="Points">Points</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <p></p>
+                            <tr>
+                                <td align="right" valign="top">
+                                    <label htmlFor="wd-submission-type" className="me-2">Submission Type</label>
+                                </td>
+                                <td className="border p-3">
+                                    <select
+                                        id="submissionType"
+                                        className="form-select"
+                                        value={formState.submissionType}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="Online">Online</option>
+                                        <option value="In-person">In-person</option>
+                                    </select>
 
-                                <p></p>
-                                {/* <div id="wd-online-options">
+                                    <p></p>
+                                    {/* <div id="wd-online-options">
                                     <label>Online Entry Options:</label><br />
                                     <div className="form-check">
                                         <input type="checkbox" name="check-online-options" id="wd-chkbox-text" className="form-check-input" />
@@ -168,22 +176,28 @@ export default function AssignmentEditor() {
                                         <label htmlFor="wd-chkbox-uploads" className="form-check-label"> File Uploads</label>
                                     </div>
                                 </div> */}
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        </ProtectedContent>
                         <br />
                         <tr>
-                            <td align="right" valign="top">
-                                <label htmlFor="assign-to" className="me-2">Assign</label>
-                            </td>
+                            <ProtectedContent allowedRoles={["FACULTY"]}>
+                                <td align="right" valign="top">
+                                    <label htmlFor="assign-to" className="me-2">Assign</label>
+                                </td>
+                            </ProtectedContent>
                             <td valign="top">
-                                <label htmlFor="assign-to" className="mb-2">Assign to</label> <br />
-                                <input
-                                    type="text"
-                                    id="assign-to"
-                                    value="Everyone"
-                                    className="form-control"
-                                />
-                                <p></p>
+                                <ProtectedContent allowedRoles={["FACULTY"]}>
+                                    <label htmlFor="assign-to" className="mb-2">Assign to</label> <br />
+                                    <input
+                                        type="text"
+                                        id="assign-to"
+                                        value="Everyone"
+                                        className="form-control"
+                                        readOnly={isReadOnly}
+                                    />
+                                    <p></p>
+                                </ProtectedContent>
                                 <label htmlFor="due_date" className="mb-2">Due</label> <br />
                                 <input
                                     type="date"
@@ -191,6 +205,7 @@ export default function AssignmentEditor() {
                                     id="due_date"
                                     value={formState.due_date}
                                     onChange={handleChange}
+                                    readOnly={isReadOnly}
                                 />
                                 <p></p>
                                 <td>
@@ -201,6 +216,7 @@ export default function AssignmentEditor() {
                                         id="available_from_date"
                                         value={formState.available_from_date}
                                         onChange={handleChange}
+                                        readOnly={isReadOnly}
                                     />
                                 </td>
                                 <td>
@@ -211,33 +227,36 @@ export default function AssignmentEditor() {
                                         id="available_until_date"
                                         value={formState.available_until_date}
                                         onChange={handleChange}
+                                        readOnly={isReadOnly}
                                     />
                                 </td>
                             </td>
                         </tr>
-                        <tr>
-                            <td colSpan={2}><hr /></td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2} align="right">
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary me-2"
-                                    id="wd-cancel"
-                                    onClick={handleCancel}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn button-red"
-                                    id="wd-save"
-                                    onClick={handleSave}
-                                >
-                                    Save
-                                </button>
-                            </td>
-                        </tr>
+                        <ProtectedContent allowedRoles={["FACULTY"]}>
+                            <tr>
+                                <td colSpan={2}><hr /></td>
+                            </tr>
+                            <tr>
+                                <td colSpan={2} align="right">
+                                    <button
+                                        type="button"
+                                        className="btn btn-secondary me-2"
+                                        id="wd-cancel"
+                                        onClick={handleCancel}
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn button-red"
+                                        id="wd-save"
+                                        onClick={handleSave}
+                                    >
+                                        Save
+                                    </button>
+                                </td>
+                            </tr>
+                        </ProtectedContent>
                     </tbody>
                 </table>
             </form>
