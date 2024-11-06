@@ -68,6 +68,11 @@ body * {
     color: white;
 }
 
+.button-green {
+    background-color: lawngreen;
+    color: white;
+}
+
 .form-control {
     white-space: pre-wrap;
 }
