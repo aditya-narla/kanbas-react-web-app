@@ -49,13 +49,15 @@ export default function TOC() {
           target="_blank" rel="noreferrer" className="nav-link">
           GitHub - React
         </a>
-        <br />
+      </li>
+      <li>
         <a id="wd-github-node"
           href="https://github.com/aditya-narla/kanbas-node-server-app"
           target="_blank" rel="noreferrer" className="nav-link">
           GitHub - Node
         </a>
-        <br />
+      </li>
+      <li>
         <a id="wd-render-url"
           href="https://kanbas-node-server-app-y049.onrender.com"
           target="_blank" rel="noreferrer" className="nav-link">
