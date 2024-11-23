@@ -5,15 +5,31 @@ import { FaBook } from "react-icons/fa6";
 import { useParams } from "react-router";
 import ProtectedContent from "../../Account/ProtectedContent";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAssignment } from "./reducer";
+import { deleteAssignment, setAssignments } from "./reducer";
 import { IoIosSearch } from "react-icons/io";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import * as client from "./client";
 
 export default function Assignments() {
     const { cid } = useParams();
     // const assignments = db.assignments;
     const assignments = useSelector((state: any) => state.assignmentReducer.assignments);
     const dispatch = useDispatch();
+
+    const fetchAssignments = async () => {
+        const assignments = await client.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(assignments));
+    }
+
+    const removeAssignment = async (assignmentId: string) => {
+        await client.deleteAssignment(assignmentId);
+        dispatch(deleteAssignment(assignmentId));
+    };
+
+    useEffect(()=>{
+        fetchAssignments();
+      },[]);
 
     const handleDeleteAssignment = (assignmentId: string) => {
         const confirmed = window.confirm("Confirm that you want to delete this assignment");
