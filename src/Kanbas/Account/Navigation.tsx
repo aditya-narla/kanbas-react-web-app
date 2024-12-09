@@ -8,14 +8,15 @@ export default function AccountNavigation() {
     //     { label: "Signup", path: "Signup" },
     //     { label: "Profile", path: "Profile" }
     // ];
-    const links = currentUser ? 
-    [
-        { label: "Profile", path: "Profile" }
-    ] : 
-    [
-        { label: "Signin", path: "Signin" },
-        { label: "Signup", path: "Signup" }
-    ];
+    const active = (path: string) => (pathname.includes(path) ? "active" : "");
+    const links = currentUser ?
+        [
+            { label: "Profile", path: "Profile" }
+        ] :
+        [
+            { label: "Signin", path: "Signin" },
+            { label: "Signup", path: "Signup" }
+        ];
     const { pathname } = useLocation();
 
     return (
@@ -24,12 +25,15 @@ export default function AccountNavigation() {
                 <Link
                     key={link.path}
                     to={`/Kanbas/Account/${link.path}`}
-                    className={`list-group-item border-0 ${pathname.includes(link.path) ? "active text-black" : "text-danger"
+                    className={`list-group-item border-0 ${pathname.includes(link.path)
+                        ? "active text-black" : "text-danger"
                         }`}
                 >
                     {link.label}
                 </Link>
             ))}
+            {currentUser && currentUser.role === "ADMIN" && (
+                <Link to={`/Kanbas/Account/Users`} className={`list-group-item ${active("Users")}`}> Users </Link>)}
         </div>
     );
 }
