@@ -8,6 +8,11 @@ export const fetchAllCourses = async () => {
     return data;
 };
 
+export const createCourse = async (course: any) => {
+    const { data } = await axiosWithCredentials.post(COURSES_API, course);
+    return data;
+};
+
 export const deleteCourse = async (id: string) => {
     const { data } = await axiosWithCredentials.delete(`${COURSES_API}/${id}`);
     return data;
