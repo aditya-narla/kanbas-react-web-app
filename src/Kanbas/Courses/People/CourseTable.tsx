@@ -4,8 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { findUsersForCourse } from "../../Courses/client";
 
-export default function PeopleTable({ users = [] }: { users?: any[] }) {
-    const [usersList, setUsers] = useState<any[]>([]);
+export default function CourseTable() {
+    const [users, setUsers] = useState<any[]>([]);
     // const { courseId } = useParams<{ courseId: string }>();
     const { cid: courseId } = useParams();
 
