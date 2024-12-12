@@ -13,10 +13,17 @@ export default function Signin() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const signin = async () => {
+
+        
+
         try {
             const user = await client.signin(credentials);
             if (!user) return;
-            dispatch(setCurrentUser(user));
+            const userNew = { ...user, isStaff: user.role === "FACULTY" }
+            dispatch(setCurrentUser(userNew));
+            localStorage.setItem("USER", JSON.stringify(userNew));
+            console.log(userNew);
+
             navigate("/Kanbas/Account/Profile");
         } catch (err: any) {
             setError(err.response.data.message);

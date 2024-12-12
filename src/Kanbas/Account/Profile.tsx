@@ -21,6 +21,7 @@ export default function Profile() {
         await client.signout();
         dispatch(setCurrentUser(null));
         navigate("/Kanbas/Account/Signin");
+        localStorage.setItem("USER", "");
     };
     useEffect(() => { fetchProfile(); }, []);
     return (

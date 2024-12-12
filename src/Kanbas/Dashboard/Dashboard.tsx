@@ -42,29 +42,28 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
         fetchEnrollments();
     }, [currentUser]);
 
-    // const toggleEnrollment = async (courseId: string) => {
-    //     if (!currentUser) return;
+    const toggleEnrollment = async (courseId: string) => {
+        if (!currentUser) return;
 
-    //     try {
-    //         if (isEnrolled(courseId)) {
-    //             await unenrollCourse(currentUser._id, courseId);
-    //             setEnrollments(enrollments.filter(e => e.course !== courseId));
-    //         } else {
-    //             const newEnrollment = await enrollCourse(currentUser._id, courseId);
-    //             setEnrollments([...enrollments, newEnrollment]);
-    //         }
-    //     } catch (error) {
-    //         console.error("Error toggling enrollment:", error);
-    //     }
-    // };
+        try {
+            if (isEnrolled(courseId)) {
+                await unenrollCourse(currentUser._id, courseId);
+                setEnrollments(enrollments.filter(e => e.course !== courseId));
+            } else {
+                const newEnrollment = await enrollCourse(currentUser._id, courseId);
+                setEnrollments([...enrollments, newEnrollment]);
+            }
+        } catch (error) {
+            console.error("Error toggling enrollment:", error);
+        }
+    };
 
-    // const isEnrolled = (courseId: string) => {
-    //     return enrollments.some(
-    //         (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === courseId
-    //     );
-    // };
+    const isEnrolled = (courseId: string) => {
+        return enrollments.some(
+            (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === courseId
+        );
+    };
 
-    // const filteredCourses = showAllCourses ? courses : courses.filter((course) => isEnrolled(course._id));
 
     return (
         <div id="wd-dashboard">
@@ -108,9 +107,9 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
             <hr />
 
             {/* Show published courses if faculty */}
-            {currentUser.role === "FACULTY" && (
+            {(
                 <>
-                    <h2 id="wd-dashboard-published">Published Courses({courses.length})</h2>
+                    <h2 id="wd-dashboard-published">{(currentUser.role === "FACULTY") ? "Published Courses" : `${enrolling ? "All" : "Enrolled"} Courses`} ({courses.length})</h2>
                     <hr />
                     <div id="wd-dashboard-courses" className="row">
                         <div className="row row-cols-1 row-cols-md-5 g-4">
@@ -167,6 +166,9 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
                     </div>
                 </>
             )}
+
+
+
         </div>
     );
 }
