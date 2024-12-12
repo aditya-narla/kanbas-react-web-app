@@ -72,9 +72,9 @@ export default function Quizzes() {
     oneQView: true,
     webcamReq: false,
     lockAfterAttempt: false,
-    dueDate: "2024-07-01",
-    availableFrom: "2024-06-01",
-    availableUntil: "2024-07-08",
+    dueDate: "2024-12-20",
+    availableFrom: "2024-12-01",
+    availableUntil: "2024-12-31",
     questions: [],
   };
 
