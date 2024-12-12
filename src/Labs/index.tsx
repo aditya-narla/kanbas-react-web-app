@@ -12,6 +12,7 @@ export default function Labs() {
   return (
     <Provider store={store}>
       <div id="wd-labs">
+        FINAL PROJECT
         Name: <b>Aditya Narla and Nayonika Sen</b> <br />
         Section: <b>02 (Aditya) and 03 (Nayonika)</b> <br />
         CRN: <b>20595</b> <br /> <br />
