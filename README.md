@@ -1,6 +1,6 @@
-# Kanbas React Web App
+# Kanbas Tool
 
-Welcome to the Kanbas React Web App repository! This project is a robust Learning Management System (LMS) built using the MERN stack, which comprises MongoDB, Express, React, and Node.js.
+Welcome to the Kanbas Tool repository! This project is a robust Learning Management System (LMS) built using the MERN stack, which comprises MongoDB, Express, React, and Node.js.
 
 ## Table of Contents
 
@@ -38,9 +38,73 @@ The application is hosted on the following platforms:
 
 ## Installation
 
-To run this project locally, follow these steps (you might need to request my permission for this):
+To run this project locally, follow these steps:
 
 1. **Clone the repository**:
-   ```sh
+
    git clone https://github.com/username/kanbas-react-web-app.git
    cd kanbas-react-web-app
+
+2. **Install dependencies**:
+
+   # Install backend dependencies
+   cd backend
+   npm install
+
+   # Install frontend dependencies
+   cd ../frontend
+   npm install
+
+3. **Set up environment variables**:
+   - Create a `.env` file in the `backend` directory and add the following variables:
+
+     MONGO_URI=<your-mongodb-uri>
+     JWT_SECRET=<your-jwt-secret>
+
+4. **Run the application**:
+
+   # Run backend server
+   cd backend
+   npm start
+
+   # Run frontend server
+   cd ../frontend
+   npm start
+
+5. **Access the application**:
+   Open your browser and navigate to `http://localhost:3000` to access the frontend.
+
+## Usage
+
+- **Admin**: Manage courses, users, and roles.
+- **Instructor**: Create and manage courses.
+- **Student**: Enroll in courses and view content.
+
+## Contributing
+
+We welcome contributions to improve the Kanbas React Web App. To contribute, follow these steps:
+
+1. **Fork the repository**.
+2. **Create a new branch**:
+
+   git checkout -b feature/your-feature-name
+
+3. **Make your changes**.
+4. **Commit your changes**:
+
+   git commit -m "Add your message here"
+
+5. **Push to the branch**:
+
+   git push origin feature/your-feature-name
+
+6. **Create a pull request**.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Thank you for using the Kanbas React Web App! If you have any questions or feedback, feel free to open an issue or contact us.
+``` ▋
