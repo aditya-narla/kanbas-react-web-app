@@ -50,30 +50,40 @@ To run this project locally, follow these steps:
 2. **Install dependencies**:
 
    # Install backend dependencies
+   ```sh
    cd backend
    npm install
+   ```
 
    # Install frontend dependencies
+   ```sh
    cd ../frontend
    npm install
+   ```
 
-3. **Set up environment variables**:
+4. **Set up environment variables**:
    - Create a `.env` file in the `backend` directory and add the following variables:
 
+     ```sh
      MONGO_URI=<your-mongodb-uri>
      JWT_SECRET=<your-jwt-secret>
+     ```
 
-4. **Run the application**:
+5. **Run the application**:
 
    # Run backend server
+   ```sh
    cd backend
    npm start
+   ```
 
    # Run frontend server
+   ```sh
    cd ../frontend
    npm start
+   ```
 
-5. **Access the application**:
+7. **Access the application**:
    Open your browser and navigate to `http://localhost:3000` to access the frontend.
 
 ## Usage
@@ -89,16 +99,22 @@ We welcome contributions to improve the Kanbas React Web App. To contribute, fol
 1. **Fork the repository**.
 2. **Create a new branch**:
 
+   ```sh
    git checkout -b feature/your-feature-name
+   ```
 
 3. **Make your changes**.
 4. **Commit your changes**:
 
+   ```sh
    git commit -m "Add your message here"
+   ```
 
 5. **Push to the branch**:
 
+   ```sh
    git push origin feature/your-feature-name
+   ```
 
 6. **Create a pull request**.
 
@@ -108,5 +124,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Thank you for using the Kanbas React Web App! If you have any questions or feedback, feel free to open an issue or contact us.
+Thank you for using the Kanbas Tool! If you have any questions or feedback, feel free to open an issue or contact me.
 ``` ▋
