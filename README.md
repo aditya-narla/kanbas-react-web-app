@@ -122,7 +122,4 @@ We welcome contributions to improve the Kanbas React Web App. To contribute, fol
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-
 Thank you for using the Kanbas Tool! If you have any questions or feedback, feel free to open an issue or contact me.
-``` ▋
