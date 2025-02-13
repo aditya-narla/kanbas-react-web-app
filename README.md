@@ -42,8 +42,10 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**:
 
-   git clone https://github.com/username/kanbas-react-web-app.git
+   ```sh
+   git clone https://github.com/aditya-narla/kanbas-react-web-app.git
    cd kanbas-react-web-app
+   ```
 
 2. **Install dependencies**:
 
