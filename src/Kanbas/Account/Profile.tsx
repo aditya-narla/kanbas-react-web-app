@@ -63,7 +63,7 @@ export default function Profile() {
                     <input value={profile.email || ""} id="wd-email" className="form-control mb-2"
                         onChange={(e) => setProfile({ ...profile, email: e.target.value })}
                         placeholder="Email" />
-                    {isAdmin ? (
+                    {isAdmin && profile.role !== "ADMIN" ? (
                         <select value={profile.role || "USER"}
                             onChange={(e) => setProfile({ ...profile, role: e.target.value })}
                             className="form-control mb-2" id="wd-role">
