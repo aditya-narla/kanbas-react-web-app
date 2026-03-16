@@ -3,11 +3,13 @@ import PeopleDetails from "./Details";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { findUsersForCourse } from "../../Courses/client";
+import { useSelector } from "react-redux";
 
 export default function CourseTable() {
     const [users, setUsers] = useState<any[]>([]);
-    // const { courseId } = useParams<{ courseId: string }>();
     const { cid: courseId } = useParams();
+    const { currentUser } = useSelector((state: any) => state.accountReducer);
+    const isAdmin = currentUser?.role === "ADMIN";
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -37,11 +39,19 @@ export default function CourseTable() {
                     {users.map((user: any) => (
                         <tr key={user._id}>
                             <td className="wd-full-name text-nowrap">
-                                <Link to={`/Kanbas/Account/Users/${user._id}`} className="text-decoration-none">
-                                    <FaUserCircle className="me-2 fs-1 text-secondary" />
-                                    <span className="wd-first-name">{user.firstName}</span>{" "}
-                                    <span className="wd-last-name">{user.lastName}</span>
-                                </Link>
+                                {isAdmin ? (
+                                    <Link to={`/Kanbas/Account/Users/${user._id}`} className="text-decoration-none">
+                                        <FaUserCircle className="me-2 fs-1 text-secondary" />
+                                        <span className="wd-first-name">{user.firstName}</span>{" "}
+                                        <span className="wd-last-name">{user.lastName}</span>
+                                    </Link>
+                                ) : (
+                                    <span>
+                                        <FaUserCircle className="me-2 fs-1 text-secondary" />
+                                        <span className="wd-first-name">{user.firstName}</span>{" "}
+                                        <span className="wd-last-name">{user.lastName}</span>
+                                    </span>
+                                )}
                             </td>
                             <td className="wd-login-id">{user.loginId}</td>
                             <td className="wd-section">{user.section}</td>
