@@ -11,20 +11,35 @@ export default function Profile() {
     const { currentUser } = useSelector((state: any) => state.accountReducer);
     const isAdmin = currentUser?.role === "ADMIN";
 
+    // fetch fresh from server every time Profile mounts
+    useEffect(() => {
+        const fetchFromServer = async () => {
+            try {
+                const user = await client.profile();
+                setProfile(user);
+                dispatch(setCurrentUser(user));
+            } catch {
+                navigate("/Kanbas/Account/Signin");
+            }
+        };
+        fetchFromServer();
+    }, []);
+
     const updateProfile = async () => {
-        const updatedProfile = await client.updateUser(profile);
-        dispatch(setCurrentUser(updatedProfile));
+        try {
+            const updatedProfile = await client.updateUser(profile);
+            setProfile(updatedProfile);
+            dispatch(setCurrentUser(updatedProfile));
+        } catch (e: any) {
+            alert(e.response?.data?.message || "Update failed. Try again.");
+        }
     };
-    const fetchProfile = async () => {
-        if (!currentUser) return navigate("/Kanbas/Account/Signin");
-        setProfile(currentUser);
-    };
+
     const signout = async () => {
         await client.signout();
         dispatch(setCurrentUser(null));
         navigate("/Kanbas/Account/Signin");
     };
-    useEffect(() => { fetchProfile(); }, [currentUser]);
 
     return (
         <div className="wd-profile-screen">
@@ -48,7 +63,6 @@ export default function Profile() {
                     <input value={profile.email || ""} id="wd-email" className="form-control mb-2"
                         onChange={(e) => setProfile({ ...profile, email: e.target.value })}
                         placeholder="Email" />
-                    {/* only ADMIN can change roles — others see their role as read-only */}
                     {isAdmin ? (
                         <select value={profile.role || "USER"}
                             onChange={(e) => setProfile({ ...profile, role: e.target.value })}
